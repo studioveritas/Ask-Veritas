@@ -1,0 +1,22 @@
+{
+  "name": "ask-veritas",
+  "private": true,
+  "description": "Drop-in 'Ask Veritas' pop-out chat for the Studio Veritas Next.js site. Copy app/, components/ and lib/ into the project; dependencies listed here are for local checks only.",
+  "scripts": {
+    "test": "tsx --test test/*.test.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "latest",
+    "framer-motion": "latest",
+    "next": "latest",
+    "react": "latest",
+    "react-dom": "latest"
+  },
+  "devDependencies": {
+    "@types/node": "latest",
+    "@types/react": "latest",
+    "tsx": "latest",
+    "typescript": "latest"
+  }
+}
