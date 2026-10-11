@@ -50,6 +50,19 @@ No database, no Prisma, no `/api/contact`. Conversations are not stored.
    - `UPSTASH_REDIS_REST_URL` and `UPSTASH_REDIS_REST_TOKEN` (strongly recommended, see "Honest limits")
 7. Update the privacy policy (below), deploy to a preview, and run the checks at the bottom.
 
+## Trying it on its own (before it goes into the site)
+
+`app/layout.tsx`, `app/page.tsx` and `app/TrialFooter.tsx` are a **trial shell**: a stand-in home page with the footer triangle, marked "Trial build". With them in the repo, the `ask-veritas` Vercel project serves a working page. **Don't copy these three files into the real site.**
+
+Trial settings in Vercel (Project → Settings → Environment Variables):
+
+- `ANTHROPIC_API_KEY`: the key you made for this, with a spend limit set in the Anthropic Console. Mark it Sensitive. Never commit it; the repo is public.
+- `ASK_ALLOWED_ORIGINS=ask-veritas.vercel.app,ask-veritas-gfurminger-1137.vercel.app`. **Without this every question gets "Something broke"**, because by default only studio-veritas.com is allowed.
+- `ASK_GLOBAL_DAY_MAX=30`: a low cap while trialling.
+- `ASK_HASH_SALT=<any long random string>`
+
+Redeploy after adding them. Vercel Authentication is on for the project, so the `.vercel.app` URLs only open for people signed in to your Vercel account or team. Upstash isn't needed for a small trial.
+
 ## Turning on the Process guide
 
 In `lib/process.ts`, replace each `copy: null` with the real copy for that stage. When **all three** are filled:
